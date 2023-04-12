@@ -36,7 +36,7 @@ namespace GenericsLabOne
             }
             else
             {
-                Console.WriteLine("The properties are not unique for box: '" + item + "' and can´t be added! ");
+                Console.WriteLine("The properties are not unique for box '" + item.name + "' and can´t be added! ");
             }
         }
         public void Clear()
@@ -100,12 +100,17 @@ namespace GenericsLabOne
         {
             for (int i = 0; i < boxCollection.Count; i++)
             {
-                if (boxCollection.Contains(item))
+                if (boxCollection[i].Equals(item))
                 {
                     boxCollection.RemoveAt(i);
-                    Console.WriteLine(" -'{0}' was removed!", item.ToString());
+                    Console.WriteLine(" -'{0}' was removed!", item.name);
+                }
+                else
+                {
+                    //   i++; // Öka värdet på i
                 }
             }
+
         }
         bool ICollection<Box>.Remove(Box item)
         {
@@ -115,7 +120,7 @@ namespace GenericsLabOne
         {
             foreach (var item in this)
             {
-                Console.WriteLine(" -" + item);
+                Console.WriteLine(" -" + item.name);
             }
         }
         IEnumerator IEnumerable.GetEnumerator()

@@ -11,12 +11,14 @@ namespace GenericsLabOne
         public int height { get; set; }
         public int lenght { get; set; }
         public int width { get; set; }
+        public string name { get; set; }
 
-        public Box(int h, int l, int w) //Konstruktor
+        public Box(int h, int l, int w, string n) //Konstruktor
         {
             this.height = h;
             this.lenght = l;
             this.width = w;
+            this.name = n;
         }
 
         public bool Equals(Box other)//Jämför lådors egenskaper
@@ -32,16 +34,12 @@ namespace GenericsLabOne
         public override bool Equals(object obj)//jämför två objekt
         {
             return base.Equals(obj);
-            // kallar på Equals-metoden i den underliggande klassen
-            // Object genom att använda nyckelordet "base".
         }
         /*
         public override int GetHashCode()
         {
             return height.GetHashCode() ^ lenght.GetHashCode() ^ width.GetHashCode();
         }
-        //genererar hashcode för objektet baserat på egenskapernas värden
-        //XOR operatorn utföra hashkoderna för varje egenskap
         */
         public override int GetHashCode()
         {
