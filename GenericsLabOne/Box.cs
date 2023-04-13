@@ -12,16 +12,15 @@ namespace GenericsLabOne
         public int lenght { get; set; }
         public int width { get; set; }
         public string name { get; set; }
-
-        public Box(int h, int l, int w, string n) //Konstruktor
+        public Box(int h, int l, int w, string n) //Constructor
         {
             this.height = h;
             this.lenght = l;
             this.width = w;
             this.name = n;
         }
-
-        public bool Equals(Box other)//Jämför lådors egenskaper
+        //Compares two boxes values
+        public bool Equals(Box other)
         {
             if (height == other.height && lenght == other.lenght && width == other.width)
             {
@@ -29,18 +28,11 @@ namespace GenericsLabOne
             }
             else return false;
         }
-
-
-        public override bool Equals(object obj)//jämför två objekt
+        //compares two objects, not only boxes
+        public override bool Equals(object obj)
         {
             return base.Equals(obj);
         }
-        /*
-        public override int GetHashCode()
-        {
-            return height.GetHashCode() ^ lenght.GetHashCode() ^ width.GetHashCode();
-        }
-        */
         public override int GetHashCode()
         {
             return base.GetHashCode();

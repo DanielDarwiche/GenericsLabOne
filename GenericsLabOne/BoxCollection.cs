@@ -11,6 +11,7 @@ namespace GenericsLabOne
     internal class BoxCollection : ICollection<Box>
     {
         private List<Box> boxCollection;
+        //Constructor
         public BoxCollection()
         {
             boxCollection = new List<Box>();
@@ -20,14 +21,12 @@ namespace GenericsLabOne
             get { return (Box)boxCollection[index]; }
             set { boxCollection[index] = value; }
         }
-
         public int Count
         {
             get { return boxCollection.Count; }
         }
-
         public bool IsReadOnly { get { return false; } }
-
+        //Add-method which checks if added boxes are unique in the collection before adding 
         public void Add(Box item)
         {
             if (!boxCollection.Contains(item))
@@ -43,8 +42,8 @@ namespace GenericsLabOne
         {
             boxCollection.Clear();
         }
-
-        public bool Contains(Box item)  //Ska kolla om  en låda finns i samlingen.
+        //Checking if a box exists in the collection
+        public bool Contains(Box item)
         {
             bool found = false;
             foreach (Box bo in boxCollection)
@@ -56,8 +55,7 @@ namespace GenericsLabOne
             }
             return found;
         }
-        //en överlagring av metoden Contains som tar
-        //ett specificerat EqualityComparer<T>-objekt,
+        //overloading Contains, takeing a specified EqualityComparer<T>-object
         public bool Contains(Box item, EqualityComparer<Box> comparer)
         {
             bool found = false;
@@ -71,7 +69,6 @@ namespace GenericsLabOne
             }
             return found;
         }
-
         public void CopyTo(Box[] array, int arrayIndex)
         {
             if (array == null)
@@ -94,8 +91,8 @@ namespace GenericsLabOne
         public IEnumerator<Box> GetEnumerator()
         {
             return boxCollection.GetEnumerator();
-            //return new BoxEnumerator(this);
         }
+        // Remove method to remove chosen box
         public void Remove(Box item)
         {
             for (int i = 0; i < boxCollection.Count; i++)
@@ -105,17 +102,14 @@ namespace GenericsLabOne
                     boxCollection.RemoveAt(i);
                     Console.WriteLine(" -'{0}' was removed!", item.name);
                 }
-                else
-                {
-                    //   i++; // Öka värdet på i
-                }
+                else { }
             }
-
         }
         bool ICollection<Box>.Remove(Box item)
         {
             return boxCollection.Remove(item);
         }
+        //Display method to write out all items in the BoxCollection
         public void Display()
         {
             foreach (var item in this)
@@ -126,7 +120,6 @@ namespace GenericsLabOne
         IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
-            // return new BoxEnumerator(this);
         }
     }
 }
