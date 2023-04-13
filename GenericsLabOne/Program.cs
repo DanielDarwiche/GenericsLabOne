@@ -43,8 +43,9 @@ namespace GenericsLabOne
             Box DBox = new Box(500, 500, 500, "DBox");
 
             //bc.contains, uses the equalitycomparer to compare the containment-values of bc with DBox-values
-            BoxEqualityComparer boxEqualityComparer = new BoxEqualityComparer();
-            if (bc.Contains(DBox, boxEqualityComparer))
+            //BoxEqualityComparer boxEqualityComparer = new BoxEqualityComparer();
+            //We can create an instance as above or one temporary as below
+            if (bc.Contains(DBox, new BoxEqualityComparer()))
             {
                 Console.WriteLine("Bc contains values which are identical to " + DBox.name);
             }   //If any of the values are equal to DBox:s values it will be written
